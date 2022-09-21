@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install -g serverless
+      - npm install
+
+  pre build:
+  commands:
+      - docker build -t nodejs .
+
+  build:
+    commands:
+      - docker images
+      - docker run nodejs
+
